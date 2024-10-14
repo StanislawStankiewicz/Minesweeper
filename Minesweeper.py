@@ -1,6 +1,6 @@
 import random
 
-from Board import Board
+from Board import Board, MINE_SYMBOL
 
 
 class Minesweeper:
@@ -31,7 +31,7 @@ class Minesweeper:
                  random.randint(0, self.board_rows - 1))
             )
         for mine in self.mines:
-            self.board.set_value(mine[0], mine[1], 'X')
+            self.board.set_value(mine[0], mine[1], MINE_SYMBOL)
 
     def calculate_fields(self):
         for mine in self.mines:

@@ -1,5 +1,32 @@
 from colorama import Fore, Back
 
+MINE_SYMBOL = 'X'
+
+background_color_schema = {
+    MINE_SYMBOL: Back.BLACK,
+    0: Back.LIGHTBLACK_EX,
+    1: Back.BLUE,
+    2: Back.CYAN,
+    3: Back.GREEN,
+    4: Back.LIGHTGREEN_EX,
+    5: Back.YELLOW,
+    6: Back.LIGHTYELLOW_EX,
+    7: Back.LIGHTRED_EX,
+    8: Back.RED
+}
+
+foreground_color_schema = {
+    MINE_SYMBOL: Fore.RESET,
+    8: Fore.RESET
+}
+
+def get_fore_color(value):
+    return foreground_color_schema.get(value, Fore.BLACK)
+
+def get_back_color(value):
+    return background_color_schema.get(value)
+
+
 class Board:
     def __init__(self, columns, rows):
         self.board = [[0 for _ in range(columns)] for _ in range(rows)]
@@ -18,41 +45,9 @@ class Board:
         for i, row in enumerate(self.board):
             r = f"{i}. "
             for value in row:
-                r += self.get_fore_color(value) + self.get_back_color(value) + f" {value} " + Back.RESET + Fore.RESET
+                r += get_fore_color(value) + get_back_color(value) + f" {value} " + Back.RESET + Fore.RESET
             result += f"{r}\n"
         return result
-
-    def get_back_color(self, value):
-        if isinstance(value, str):
-            return Back.BLACK
-        if value == 0:
-            return Back.LIGHTBLACK_EX
-        if value == 1:
-            return Back.BLUE
-        if value == 2:
-            return Back.CYAN
-        if value == 3:
-            return Back.GREEN
-        if value == 4:
-            return Back.LIGHTGREEN_EX
-        if value == 5:
-            return Back.YELLOW
-        if value == 6:
-            return Back.LIGHTYELLOW_EX
-        if value == 7:
-            return Back.LIGHTRED_EX
-        if value == 8:
-            return Back.RED
-
-        return Back.RESET
-
-    def get_fore_color(self, value):
-        if isinstance(value, str):
-            return Fore.RESET
-        if value == 8:
-            return Fore.RESET
-
-        return Fore.BLACK
 
 
 if __name__ == '__main__':
