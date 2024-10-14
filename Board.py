@@ -11,13 +11,12 @@ background_color_schema = {
     4: Back.LIGHTGREEN_EX,
     5: Back.YELLOW,
     6: Back.LIGHTYELLOW_EX,
-    7: Back.LIGHTRED_EX,
-    8: Back.RED
+    7: Back.RED,
+    8: Back.LIGHTRED_EX
 }
 
 foreground_color_schema = {
     MINE_SYMBOL: Fore.RESET,
-    8: Fore.RESET
 }
 
 def get_fore_color(value):
