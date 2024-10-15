@@ -1,29 +1,4 @@
-from colorama import Fore, Back
-
 MINE_SYMBOL = 'X'
-
-background_color_schema = {
-    MINE_SYMBOL: Back.BLACK,
-    0: Back.LIGHTBLACK_EX,
-    1: Back.BLUE,
-    2: Back.CYAN,
-    3: Back.GREEN,
-    4: Back.LIGHTGREEN_EX,
-    5: Back.YELLOW,
-    6: Back.LIGHTYELLOW_EX,
-    7: Back.RED,
-    8: Back.LIGHTRED_EX
-}
-
-foreground_color_schema = {
-    MINE_SYMBOL: Fore.RESET,
-}
-
-def get_fore_color(value):
-    return foreground_color_schema.get(value, Fore.BLACK)
-
-def get_back_color(value):
-    return background_color_schema.get(value)
 
 
 class Board:
@@ -37,14 +12,11 @@ class Board:
         self.board[row][column] = value
 
     def __str__(self):
-        result = "    "
-        for i in range(len(self.board[0])):
-            result += f"{i}. "
-        result += "\n"
+        result = ""
         for i, row in enumerate(self.board):
-            r = f"{i}. "
+            r = ""
             for value in row:
-                r += get_fore_color(value) + get_back_color(value) + f" {value} " + Back.RESET + Fore.RESET
+                r += f"{value} "
             result += f"{r}\n"
         return result
 

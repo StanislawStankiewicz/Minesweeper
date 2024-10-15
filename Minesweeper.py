@@ -50,4 +50,4 @@ class Minesweeper:
                 self.board.set_value(x, y, value + 1)
 
 if __name__ == '__main__':
-    print(Minesweeper(5, 4, 5).board)
+    print(Minesweeper(30, 20, 100 ).board)
